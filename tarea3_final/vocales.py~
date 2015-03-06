@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# <nbformat>3.0</nbformat>
+
+# <codecell>
+import sys
+import numpy as np
+import string
+infile = open('Sainte-Beuve.txt', 'r')
+
+#load the full text by lines
+
+N = int(sys.argv[1])
+text = infile.readlines()
+for x in range(0,N):
+    a = list(text[x])
+    n = 0
+    for y in a:
+        #Para contar el numero de vocales hay que añadir tambien las vocales que tienen tilde. Para esto estamos haciendo 
+        #suposición de que una vocal con tilde esta precedida por el caracter \xc3 al igual que otras formas de tilde 
+        # como è, ù , û, entre otras. Tambien se supone que este caracter no aparece más que encima de una vocal. Por 
+        # ciertas comprobaciones que he hecho, estas suposiciones parecen bastante validas
+        if((y == 'a') | (y == 'b') | (y == 'c') | (y == 'd') | (y == 'e') | (y == '\xc3')):
+            n = n+1
+    print "En la linea "+ repr(x) + " hay " + repr(n) + " vocales"
+    
+  
+
+# <codecell>
+
+
